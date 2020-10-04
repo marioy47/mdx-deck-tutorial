@@ -5,5 +5,8 @@
   "license": "MIT",
   "devDependencies": {
     "mdx-deck": "^4.1.1"
+  },
+  "scripts": {
+    "start": "mdx-deck slides.mdx"
   }
 }
