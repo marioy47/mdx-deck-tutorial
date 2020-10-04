@@ -1,7 +1,10 @@
 <!-- slides.mdx -->
 
-import { yellow } from "@mdx-deck/themes"
-export const theme = yellow
+import { yellow, prism } from "@mdx-deck/themes"
+export const theme = {
+  ...yellow,
+  ...prism,
+}
 
 # My very first presentation
 
@@ -30,4 +33,17 @@ With some content
 import ImgPath from "./images/jorge-gardner-5DqvsOPKdlk-unsplash.jpg"
 
 <img src={ImgPath} style={{maxHeight: `70vh`}} />
+
+---
+# Native Syntax Highlighting
+
+```jsx
+import React from "react";
+
+const FirstComponent = (props) => {
+return &lt;h1&gt;Highlighting&lt;/h1&gt;;
+};
+
+export default FirstComponent;
+```
 
