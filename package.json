@@ -1,0 +1,9 @@
+{
+  "name": "mdx-deck-tutorial",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "mdx-deck": "^4.1.1"
+  }
+}
