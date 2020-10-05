@@ -69,3 +69,48 @@ Use the space bar to go to the next step
 
 </Steps>
 
+---
+
+# Layouts: Split left & right
+
+<Split>
+
+![](http://place-puppy.com/201x201)
+
+![](http://place-puppy.com/202x202)
+
+</Split>
+
+---
+
+# Layouts: Invert
+
+
+<Invert>
+
+- First item
+- Second item
+- Third item
+
+</Invert>
+
+---
+# Layouts: FullScreenCode
+
+<FullScreenCode>
+
+```jsx
+import React, { useState } from "react"
+
+export default const CustomButton = () => {
+  const [counter, setCounter] = useState(0)
+
+  const increment = () => {
+    setCounter(counter + 1)
+  }
+  return <button onClick={increment}>Counter: {counter}</button>
+}
+```
+
+</FullScreenCode>
+
