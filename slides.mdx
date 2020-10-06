@@ -24,7 +24,7 @@ With some content
 
 # Now with a remote image
 
-![](http://place-puppy.com/200x200)
+![](https://loremflickr.com/400/400)
 
 ---
 
@@ -75,9 +75,20 @@ Use the space bar to go to the next step
 
 <Split>
 
-![](http://place-puppy.com/201x201)
+<img src={ImgPath} style={{ width: `80%`, objectFit: `cover` }} />
 
-![](http://place-puppy.com/202x202)
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+  return "Hello World!"
+
+if __name__ == "__main__":
+  app.run()
+```
 
 </Split>
 
