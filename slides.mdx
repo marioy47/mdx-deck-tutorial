@@ -1,10 +1,27 @@
 <!-- slides.mdx -->
 
 import { yellow, prism } from "@mdx-deck/themes"
+import IconDev from './images/icon-developer.svg';
 export const theme = {
-  ...yellow,
-  ...prism,
+...yellow,
+...prism,
 }
+
+<Header>
+
+<Image src={IconDev}  style={{width: `32px`, height: `32px`, margin: `1em` }} />
+
+</Header>
+
+<Footer>
+
+<div style={{textAlign: `right`}}>
+
+[Mario Yepes](https://marioyepes.com)
+
+</div>
+
+</Footer>
 
 # My very first presentation
 
@@ -35,6 +52,17 @@ import ImgPath from "./images/jorge-gardner-5DqvsOPKdlk-unsplash.jpg"
 <Image src={ImgPath} style={{maxWidth: `700px`}} />
 
 ---
+
+<Notes>
+
+# Full screen image
+
+</Notes>
+
+<Image src={ImgPath} />
+
+---
+
 # Native Syntax Highlighting
 
 ```jsx
@@ -96,7 +124,6 @@ if __name__ == "__main__":
 
 # Layouts: Invert
 
-
 <Invert>
 
 - First item
@@ -106,6 +133,7 @@ if __name__ == "__main__":
 </Invert>
 
 ---
+
 # Layouts: FullScreenCode
 
 <FullScreenCode>
@@ -125,3 +153,262 @@ export default const CustomButton = () => {
 
 </FullScreenCode>
 
+---
+
+# Speaker notes
+
+- The notes can only be seen by the speaker
+- Type `Cmd+p` (`Alt+p` in Win or Linux) to access the notes
+
+<Notes>
+
+- You should see a preview of the next slide
+- If you open the presentation in another window it will stay in sync
+- Sync options work only if you are using `yarn start`
+
+</Notes>
+
+---
+
+<Notes>
+
+# CodeSurfer
+
+- Code themes are outside of the deck theme
+- Can use multiple themes on the same deck
+- Code properties
+	- Showing line numbers on the code
+	- Focus lines and columns
+	- Title and subtitle
+
+</Notes>
+
+import { CodeSurfer } from 'code-surfer';
+import { github } from '@code-surfer/themes';
+
+<CodeSurfer theme={github}>
+
+```jsx showNumbers 3:6,8[15:38] title="CodeSurfer" subtitle="With numbers and selected lines"
+import React from 'react';
+
+const MyComponent = ({children}) => {
+  return (
+	<span style={{fontFamily: "monospace"}}>{children}</span>
+  );
+}
+export default MyComponent;
+```
+
+</CodeSurfer>
+
+---
+
+<Notes>
+
+# CodeSurfer: Code parameters
+
+- In this slide we are using 3 code parameters:
+	- Show line numbers
+	- Title
+	- Subtitle
+
+</Notes>
+
+<CodeSurfer theme={vsDark}>
+
+```js showNumbers title="This appears at the top" subtitle="And this at the bottom" showNumbers
+console.log('Line 1');
+console.log('Line 2');
+console.log('Line 3');
+```
+
+</CodeSurfer>
+
+---
+
+<Notes>
+
+# CodeSurfer: Focus
+
+- Multiple blocks of code but just one slide
+- The changes are animated. 
+- Useful to show the code progress or highlight progress
+
+</Notes>
+
+
+import { vsDark } from '@code-surfer/themes';
+
+<CodeSurfer theme={vsDark}>
+
+```jsx subtitle="Original code"
+import React from 'react';
+
+const MyComponent = ({dateTime, children}) => {
+  return (
+    <>
+      <span style={{fontFamily: "monospace"}}>{children}</span>
+      <time>{dateTime</time>
+    </>
+  );
+}
+export default MyComponent;
+```
+
+```jsx 3[22:30] subtitle="Now we highlight a word"
+import React from 'react';
+
+const MyComponent = ({dateTime, children}) => {
+  return (
+    <>
+      <span style={{fontFamily: "monospace"}}>{children}</span>
+      <time>{dateTime</time>
+    </>
+  );
+}
+export default MyComponent;
+```
+
+```jsx subtitle="And now we add more code"
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const MyComponent = ({dateTime, children}) => {
+  return (
+    <>
+      <span style={{fontFamily: "monospace"}}>{children}</span>
+      <time>{dateTime</time>
+    </>
+  );
+}
+
+MyComponent.defaultProps = {
+  dateTime: "2020-10-08"
+}
+
+export default MyComponent;
+```
+
+</CodeSurfer>
+
+---
+
+<Notes>
+
+# CodeSurfer: Using "diff"
+
+- Reuses the code
+- Allows the change of highlighted line numbers
+- You can change the _title_ and _subtitle_
+
+</Notes>
+
+import { nightOwl } from '@code-surfer/themes'
+
+<CodeSurfer theme={nightOwl}>
+
+```jsx title="Using Diff" showNumbers
+import React from 'react';
+
+const MyComponent = ({dateTime, children}) => {
+  return (
+    <>
+      <span style={{fontFamily: "monospace"}}>{children}</span>
+      <time>{dateTime</time>
+    </>
+  );
+}
+export default MyComponent;
+```
+
+```diff 1 subtitle="First line"
+```
+
+```diff 3 subtitle="Third line"
+```
+
+```diff 11 subtitle="Eleventh line"
+```
+
+</CodeSurfer>
+
+--- 
+
+<Notes>
+
+# CodeSurfer: Import an external file
+
+</Notes>
+
+<CodeSurfer theme={nightOwl}>
+
+```js file="./test.js"
+```
+
+</CodeSurfer>
+
+---
+
+<Notes>
+
+# CodeSurfer: Columns and steps
+
+</Notes>
+
+import { CodeSurferColumns, Step } from "code-surfer";
+
+<CodeSurferColumns themes={[github, vsDark]}>
+
+<Step subtitle="First Step">
+
+```jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const MyComponent = ({font, children}) => {
+  return (
+	<span style={{fontFamily: font}}>{children}</span>
+  );
+}
+export default MyComponent;
+```
+
+```jsx
+MyComponent.propTypes = {
+  font: PropType.string.required
+}
+```
+
+</Step>
+
+<Step subtitle="Second Step">
+
+```jsx
+import React from 'react';
+import PropTypes from 'prop-types';
+
+const MyComponent = ({font, color, children}) => {
+  return (
+	<span style={{fontFamily: font, color}}>{children}</span>
+  );
+}
+export default MyComponent;
+```
+
+```jsx
+MyComponent.propTypes = {
+  font: PropType.string.required
+  color: PropType.string.required
+}
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+--- 
+Thanks
+
+<!--
+vim: filetype=markdown
+-->
